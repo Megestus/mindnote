@@ -1,13 +1,16 @@
 const axios = require('axios');
 
 module.exports = async (req, res) => {
-    const { content, fileName, sha } = req.body;
+    let { content, fileName, sha } = req.body;
     const accessToken = req.headers['authorization']?.split(' ')[1];
 
     if (!accessToken) {
         console.error('No access token provided');
         return res.status(401).json({ success: false, error: 'No access token provided' });
     }
+
+    // 解码文件名
+    fileName = decodeURIComponent(fileName);
 
     try {
         const userResponse = await axios.get('https://api.github.com/user', {
