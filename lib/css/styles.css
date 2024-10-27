@@ -3,8 +3,8 @@
 /* 全局变量 */
 :root {
     --header-height: 60px;
-    --sidebar-width: 200px;
-    --right-sidebar-width: 200px;
+    --sidebar-width: 250px;
+    --right-sidebar-width: 250px;
     --main-padding: 10px;
 }
 
@@ -79,6 +79,13 @@ nav ul li a:hover {
     color: var(--cyan);
 }
 
+nav ul li a iconify-icon,
+#logoutButton iconify-icon {
+    margin-right: 5px;
+    font-size: 1.2em;
+    vertical-align: middle;
+}
+
 #authSection {
     display: flex;
     align-items: center;
@@ -148,6 +155,7 @@ main {
     display: flex;
     flex-direction: column;
     min-height: calc(100vh - var(--header-height));
+    overflow-y: auto;
 }
 
 article {
@@ -155,25 +163,10 @@ article {
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     padding: 10px;
-    flex: 1;
     display: flex;
     flex-direction: column;
-
-    /* 调整横向距离 */
-    width: calc(100% - 40px);
-    /* 减少 40px 的宽度，每边 20px */
-    margin-left: 20px;
-    margin-right: 20px;
-
-    /* 调整竖向长度 */
-    height: auto;
-    /* 改为自动高度 */
-    max-height: calc(100vh - var(--header-height) - 40px);
-    /* 设置最大高度 */
-    overflow-y: auto;
-    /* 添加垂直滚动条 */
-    margin-top: 20px;
-    margin-bottom: 20px;
+    height: 100%;
+    overflow: hidden;
 }
 
 /* 按钮样式 */
@@ -219,10 +212,9 @@ article {
     flex: 1;
     display: flex;
     flex-direction: column;
-    height: 710px;
-    /* 设置一个固定高度，或者使用百分比 */
-    min-height: auto;
-    /* 移除最小高度限制 */
+    height: calc(100vh - 150px); /* 调整高度 */
+    min-height: 400px;
+    overflow: hidden; /* 防止出现滚动条 */
 }
 
 /* 加载指示器 */
@@ -331,6 +323,7 @@ input[type="text"] {
     border-left: 1px solid var(--border-color);
     padding: 20px;
     box-sizing: border-box;
+    display: block; /* 确保这里不是 'none' */
 }
 
 #tocList {
@@ -354,6 +347,18 @@ input[type="text"] {
 
 #tocList a:hover {
     color: var(--cyan);
+}
+
+#tocList li::before {
+    content: '•';
+    color: var(--primary-color);
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+#tocList li {
+    padding-left: 1em;
 }
 
 /* 响应式设计 */
@@ -394,9 +399,7 @@ input[type="text"] {
 /* 编辑器样式 */
 .editormd {
     height: 100% !important;
-    min-height: 400px !important;
-    /* 设置一个合理的最小高度 */
-    border-color: var(--border-color);
+    min-height: 100% !important;
 }
 
 /* 文件输入框样式 */
@@ -433,4 +436,34 @@ input[type="text"] {
 
 #themeToggle:hover {
     color: var(--primary-color);
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.main-wrapper {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+main {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--main-padding);
+}
+
+#sidebar, #right-sidebar {
+    overflow-y: auto;
 }
