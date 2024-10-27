@@ -24,7 +24,15 @@ module.exports = async (req, res) => {
       }
     });
 
-    res.status(200).json({ success: true, message: "Authorization successful" });
+    res.status(200).json({ 
+        success: true, 
+        message: "Authorization successful",
+        user: {
+            login: userResponse.data.login,
+            name: userResponse.data.name,
+            avatar_url: userResponse.data.avatar_url
+        }
+    });
   } catch (error) {
     console.error('Error in auth callback:', error);
     res.status(500).json({ success: false, error: 'Internal Server Error' });
