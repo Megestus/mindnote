@@ -24,19 +24,16 @@ module.exports = async (req, res) => {
       }
     });
 
-    // 重定向回主页面，并将用户信息作为查询参数传递
-    res.status(200).json({ 
-      success: true, 
-      message: "Authorization successful",
-      user: {
-        login: userResponse.data.login,
-        name: userResponse.data.name,
-        avatar_url: userResponse.data.avatar_url
-      },
-      accessToken: accessToken
-    });
+    // 重定向回主页面，并将用户信息和 accessToken 作为查询参数传递
+    const redirectUrl = new URL(process.env.FRONTEND_URL);
+    redirectUrl.searchParams.append('login', userResponse.data.login);
+    redirectUrl.searchParams.append('name', userResponse.data.name || '');
+    redirectUrl.searchParams.append('avatar_url', userResponse.data.avatar_url);
+    redirectUrl.searchParams.append('accessToken', accessToken);
+
+    res.redirect(redirectUrl.toString());
   } catch (error) {
     console.error('Error in auth callback:', error);
-    res.redirect('/?error=Authorization failed');
+    res.redirect(`${process.env.FRONTEND_URL}?error=Authorization failed`);
   }
 };
