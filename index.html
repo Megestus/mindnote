@@ -17,7 +17,14 @@
             <nav>
                 <ul>
                     <li><a href="#home" id="homeLink">首页</a></li>
-                    <li><a href="#auth" id="authLink">授权</a></li>
+                    <li id="authSection">
+                        <a href="#auth" id="authLink">授权</a>
+                        <div id="userInfo" style="display: none;">
+                            <img id="userAvatar" src="" alt="" style="width: 24px; height: 24px; border-radius: 50%;">
+                            <span id="userName"></span>
+                            <button id="logoutButton" class="action-button">登出</button>
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </header>
@@ -25,7 +32,7 @@
             <div id="homePage">
                 <div id="workflowHintContainer">
                     <div class="hint-header">
-                        <h2>MindNote 工作原��</h2>
+                        <h2>MindNote 工作原</h2>
                         <button id="toggleHint" class="toggle-button" title="展开/折叠工作原理">
                             <iconify-icon icon="mdi:chevron-down"></iconify-icon>
                         </button>
@@ -45,7 +52,7 @@
                         <iconify-icon icon="mdi:plus"></iconify-icon>
                         新建文章
                     </button>
-                    <button id="saveButton" class="action-button" title="保存到 GitHub">
+                    <button id="saveButton" class="action-button" title="保存到 GitHub" style="display: none;">
                         <iconify-icon icon="mdi:send"></iconify-icon>
                         发送到Blog
                     </button>

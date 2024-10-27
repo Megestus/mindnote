@@ -351,3 +351,20 @@ nav ul li a:hover {
         max-width: none; /* 在小屏幕上取消最大宽度限制 */
     }
 }
+
+#userInfo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#userAvatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+#logoutButton {
+    padding: 5px 10px;
+    font-size: 12px;
+}
