@@ -49,3 +49,5 @@ module.exports = async (req, res) => {
     res.redirect(`${process.env.FRONTEND_URL || 'https://mindnote.vercel.app'}?error=Authorization failed: ${encodeURIComponent(error.message)}`);
   }
 };
+
+
