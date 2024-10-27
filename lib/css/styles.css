@@ -378,7 +378,7 @@ nav ul li a:hover {
     background-color: var(--button-hover);
 }
 
-/* 添加侧���栏样式 */
+/* 添加侧栏样式 */
 .sidebar {
     position: fixed;
     left: 0;
@@ -400,11 +400,25 @@ nav ul li a:hover {
 
 .sidebar ul {
     list-style-type: none;
-    padding: 0;
+    padding-left: 20px;
 }
 
 .sidebar li {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+}
+
+.sidebar .folder {
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.sidebar .folder:before {
+    content: '▶ ';
+    font-size: 0.8em;
+}
+
+.sidebar .folder.open:before {
+    content: '▼ ';
 }
 
 .sidebar a {
@@ -435,4 +449,41 @@ nav ul li a:hover {
     .main-content {
         margin-left: 0;
     }
+}
+
+.loading-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loading-indicator.hidden {
+    display: none;
+}
+
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-indicator p {
+    margin-top: 10px;
+    color: white;
 }

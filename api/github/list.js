@@ -17,13 +17,14 @@ module.exports = async (req, res) => {
             headers: { Authorization: `token ${accessToken}` }
         });
 
-        const files = repoResponse.data.map(file => ({
-            name: file.name,
-            path: file.path,
-            type: file.type
+        const files = repoResponse.data.map(item => ({
+            name: item.name,
+            path: item.path,
+            type: item.type,
+            sha: item.sha
         }));
 
-        res.status(200).json({ success: true, files });
+        res.status(200).json({ success: true, repoName: 'mindnote-blog', files });
     } catch (error) {
         console.error('Error fetching file list:', error.response ? error.response.data : error.message);
         res.status(500).json({ success: false, error: 'Failed to fetch file list', details: error.response ? error.response.data : error.message });
