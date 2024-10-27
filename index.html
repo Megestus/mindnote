@@ -12,91 +12,85 @@
 </head>
 <body>
     <div id="app">
-        <!-- 添加侧边栏 -->
-        <div id="sidebar" class="sidebar">
-            <h3>文件列表</h3>
-            <ul id="fileList"></ul>
-        </div>
-        
         <header>
-            <h1>MindNote</h1>
-            <nav>
-                <ul>
-                    <li><a href="#home" id="homeLink">首页</a></li>
-                    <li id="authSection">
-                        <a href="#auth" id="authLink">授权</a>
-                        <div id="userInfo" style="display: none;">
-                            <img id="userAvatar" src="" alt="">
-                            <span id="userName"></span>
-                            <button id="logoutButton" class="action-button">登出</button>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
+            <div class="container">
+                <h1><a href="/">MindNote</a></h1>
+                <nav>
+                    <ul>
+                        <li><a href="#home" id="homeLink">编辑</a></li>
+                        <li id="authSection">
+                            <a href="#auth" id="authLink">登录</a>
+                            <div id="userInfo" style="display: none;">
+                                <img id="userAvatar" src="" alt="">
+                                <span id="userName"></span>
+                                <button id="logoutButton" class="action-button">登出</button>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </header>
-        <div class="main-content">
-            <div id="homePage">
-                <div id="workflowHintContainer">
-                    <div class="hint-header">
-                        <h2>MindNote 工作原</h2>
-                        <button id="toggleHint" class="toggle-button" title="展开/折叠工作原理">
-                            <iconify-icon icon="mdi:chevron-down"></iconify-icon>
-                        </button>
-                    </div>
-                    <div id="workflowHint">
-                        <ol>
-                            <li>点击 "新建文章" 按钮打开编辑器</li>
-                            <li>使用 Markdown 语法编写你的想法</li>
-                            <li>内容会自动保存到本地</li>
-                            <li>点击下载按钮可以将内容保存为 Markdown 文件</li>
-                            <li>点击 "保存到 GitHub" 按钮将内容同步到你的 GitHub 仓库</li>
-                        </ol>
-                    </div>
+        <div class="main-wrapper">
+            <aside id="sidebar">
+                <div class="sidebar-content">
+                    <h3>文件列表</h3>
+                    <ul id="fileList"></ul>
                 </div>
-                <div class="action-buttons">
-                    <button id="newNoteButton" class="action-button" title="新建文章">
-                        <iconify-icon icon="mdi:plus"></iconify-icon>
-                        新建文章
-                    </button>
-                    <button id="saveButton" class="action-button" title="保存到 GitHub" style="display: none;">
-                        <iconify-icon icon="mdi:send"></iconify-icon>
-                        保存
-                    </button>
-                    <button id="updateButton" class="action-button" title="更新文件" style="display: none;">
-                        <iconify-icon icon="mdi:update"></iconify-icon>
-                        保存更改
-                    </button>
-                    <div class="file-input-container">
-                        <input type="text" id="fileNameInput" placeholder="输入文件名" title="请使用英文字母、数字和常见符号">
-                        <span class="file-name-hint">请勿使用中文文件名</span>
-                        <button id="downloadButton" class="icon-button" title="下载文件">
-                            <iconify-icon icon="mdi:download"></iconify-icon>
-                        </button>
-                    </div>
+            </aside>
+            <main>
+                <div class="container">
+                    <article>
+                        <div id="homePage">
+                            <div class="action-buttons">
+                                <button id="newNoteButton" class="action-button" title="新建文章">
+                                    <iconify-icon icon="mdi:plus"></iconify-icon>
+                                    新建文章
+                                </button>
+                                <button id="saveButton" class="action-button" title="保存到 GitHub" style="display: none;">
+                                    <iconify-icon icon="mdi:send"></iconify-icon>
+                                    保存
+                                </button>
+                                <button id="updateButton" class="action-button" title="更新文件" style="display: none;">
+                                    <iconify-icon icon="mdi:update"></iconify-icon>
+                                    保存更改
+                                </button>
+                                <div class="file-input-container">
+                                    <input type="text" id="fileNameInput" placeholder="输入文件名" title="请使用英文字母、数字和常见符号">
+                                    <span class="file-name-hint">请勿使用中文文件名</span>
+                                    <button id="downloadButton" class="icon-button" title="下载文件">
+                                        <iconify-icon icon="mdi:download"></iconify-icon>
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="editor-container">
+                                <div id="editor"></div>
+                            </div>
+                        </div>
+                        <div id="authPage" class="hidden">
+                            <h2>授权 MindNote</h2>
+                            <div class="auth-steps">
+                                <ol>
+                                    <li>授权 MindNote 访问您的公共 GitHub 仓库。</li>
+                                    <li>MindNote 在您的 GitHub 账户中创建一个名为 "mindnote-blog" 的公共仓库。</li>
+                                    <li>您在 MindNote 上写的任何内容都会提交到这个仓库。</li>
+                                    <li>您的数据存储在您的 GitHub 仓库中，与 MindNote 分开。</li>
+                                </ol>
+                            </div>
+                            <button id="authorizeButton" class="action-button">
+                                <iconify-icon icon="mdi:github"></iconify-icon>
+                                使用 GitHub 登录
+                            </button>
+                        </div>
+                    </article>
                 </div>
-
-            </div>
-
-            <div id="editor-container">
-                <div id="editor"></div>
-            </div>
-            <div id="authPage" class="hidden">
-                <h2>授权 MindNote </h2>
-                <div class="auth-steps">
-                    <ol>
-                        <li>授权 MindNote 访问您的公共 GitHub 仓库。</li>
-                        <li>MindNote 在您的 GitHub 账户中创建一个名为 "mindnote-blog" 的公共仓库。</li>
-                        <li>您在 MindNote 上写的任何内容都会提交到这个仓库。</li>
-                        <li>您的数据存储在您的 GitHub 仓库中，与 MindNote 分开。</li>
-                    </ol>
+            </main>
+            <aside id="right-sidebar">
+                <div class="sidebar-content">
+                    <h3>文章结构</h3>
+                    <ul id="tocList"></ul>
                 </div>
-                <button id="authorizeButton" class="action-button">
-                    <iconify-icon icon="mdi:github"></iconify-icon>
-                    使用 GitHub 登录
-                </button>
-            </div>
+            </aside>
         </div>
-        <!-- 在 <div id="app"> 内部添加 -->
         <div id="loadingIndicator" class="loading-indicator hidden">
             <div class="spinner"></div>
             <p>正在处理...</p>

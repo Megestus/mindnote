@@ -1,19 +1,19 @@
-/* 定义全局变量 */
+/* 全局变量 */
 :root {
-    --primary-color: #4a90e2;  /* 主要颜色，用于按钮和重点元素 */
-    --secondary-color: #61dafb;  /* 次要颜色，用于强调和悬停效果 */
-    --background-color: #1e1e1e;  /* 页面背景色 */
-    --text-color: #d4d4d4;  /* 主要文本颜色 */
-    --border-color: #333333;  /* 边框颜色 */
-    --header-height: 60px;  /* 头部高度 */
-    --editor-bg: #1e1e1e;  /* 编辑器背景色 */
-    --hint-bg: #252526;  /* 提示框背景色 */
-    --button-hover: #2980b9;  /* 按钮悬停颜色 */
+    --primary-color: #61dafb;
+    --secondary-color: #4a90e2;
+    --background-color: #1e1e1e;
+    --text-color: #e0e0e0;
+    --border-color: #333333;
+    --header-height: 60px;
+    --sidebar-width: 200px;
+    --right-sidebar-width: 200px;
+    --main-padding: 10px;
 }
 
-/* 全局样式 */
+/* 基础样式 */
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
@@ -21,22 +21,18 @@ body {
     color: var(--text-color);
 }
 
-/* 主容器样式 */
-#app {
-    max-width: 1200px;
+.container {
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 /* 头部样式 */
 header {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    height: var(--header-height);
-    padding: 0 20px;
-    background-color: var(--hint-bg);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    background-color: #252525;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     position: fixed;
     top: 0;
     left: 0;
@@ -44,224 +40,23 @@ header {
     z-index: 1000;
 }
 
-/* 头部按钮容器 */
-.header-buttons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-/* 标题样式 */
-h1 {
-    color: var(--primary-color);
-    font-size: 24px;
-    font-weight: 600;
-    margin-right: auto;
-}
-
-/* 主内容区域样式 */
-.content {
-    margin-top: calc(var(--header-height) + 20px);
-}
-
-/* 工作原理提示容器 */
-#workflowHintContainer {
-    background-color: var(--hint-bg);
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    margin-bottom: 10px;
-    overflow: hidden;
-    position: relative;
-}
-
-/* 工作原理提示头部 */
-.hint-header {
+header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;  /* 减小上下内边距 */
-    background-color: var(--primary-color);
-    color: #fff;
+    height: var(--header-height);
 }
 
-/* 工作原理提示标题 */
-.hint-header h2 {
+header h1 {
     margin: 0;
-    font-size: 16px;  /* 稍微减小字体大小 */
-    font-weight: 500;
-    text-align: left;
 }
 
-/* 工作原理提示内容 */
-#workflowHint {
-    padding: 20px;
-    max-height: 1000px;
-    transition: max-height 0.3s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out;
-    opacity: 1;
-    overflow: hidden;
+header h1 a {
+    color: var(--primary-color);
+    text-decoration: none;
 }
 
-/* 工作原理提示折叠状态 */
-#workflowHint.collapsed {
-    max-height: 0;
-    opacity: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
-/* 操作按钮容器 */
-.action-buttons {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    flex-wrap: wrap; /* 允许按钮换行 */
-}
-
-/* 操作按钮和图标按钮通用样式 */
-.action-button, .icon-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 15px;
-    background-color: var(--primary-color);
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-}
-
-/* 按钮悬停效果 */
-.action-button:hover, .icon-button:hover {
-    background-color: var(--button-hover);
-}
-
-/* 按钮内图标样式 */
-.action-button iconify-icon, .icon-button iconify-icon {
-    margin-right: 6px;
-    font-size: 18px;
-}
-
-/* 文件名输入容器 */
-.file-input-container {
-    display: flex;
-    align-items: center;
-    background-color: var(--hint-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    overflow: hidden;
-    flex-grow: 1; /* 允许容器占据剩余空间 */
-    max-width: 300px; /* 设置最大宽度，根据需要调整 */
-}
-
-/* 文件名输入框 */
-#fileNameInput {
-    padding: 8px 12px;
-    border: none;
-    font-size: 14px;
-    flex-grow: 1; /* 允许输入框占据剩余空间 */
-    background-color: var(--hint-bg);
-    color: var(--text-color);
-}
-
-/* 文件名输入框占位符样式 */
-#fileNameInput::placeholder {
-    color: #666;
-}
-
-/* 折叠/展开按钮 */
-.toggle-button {
-    background: none;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    padding: 2px;  /* 减小按钮内边距 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease;
-}
-
-/* 折叠/展开按钮图标 */
-.toggle-button iconify-icon {
-    font-size: 20px;  /* 稍微减小图标大小 */
-    transition: transform 0.3s ease;
-}
-
-/* 折叠状态下的按钮图标 */
-.toggle-button.collapsed iconify-icon {
-    transform: rotate(180deg);
-}
-
-/* 编辑器容器 */
-#editor-container {
-    display: block !important;
-    margin-top: 20px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-/* 编辑器基础样式 */
-#editor {
-    display: block !important;
-    min-height: 400px;
-}
-
-/* Editor.md 样式覆盖 */
-.editormd {
-    border: none !important;
-}
-
-.editormd-fullscreen {
-    z-index: 9999;
-}
-
-/* 确保编辑器在小屏幕上也能正常显示 */
-@media (max-width: 768px) {
-    #editor-container {
-        margin-top: 10px;
-    }
-    
-    #editor {
-        min-height: 300px;
-    }
-}
-
-/* 响应式设计 */
-@media (max-width: 768px) {
-    #app {
-        padding: 10px;
-    }
-
-    .action-buttons {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .file-input-container {
-        width: 100%;
-    }
-
-    #fileNameInput {
-        width: 100%;
-    }
-}
-
-/* 主内容区域样式 */
-.main-content {
-    margin-top: calc(var(--header-height) + 20px);
-    padding-top: 20px;
-}
-
-/* 导航栏样式 */
-nav {
-    margin-left: 20px;
-}
-
+/* 导航样式 */
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -270,228 +65,119 @@ nav ul {
 }
 
 nav ul li {
-    margin-right: 20px;
+    margin-left: 20px;
 }
 
 nav ul li a {
     color: var(--text-color);
     text-decoration: none;
-    font-size: 16px;
-    transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
-    color: var(--secondary-color);
-}
-
-/* 授权页面样式 */
-#authPage {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: var(--hint-bg);
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-}
-
-#authPage h2 {
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
-
-.auth-steps {
-    margin-bottom: 30px;
-}
-
-.auth-steps ol {
-    padding-left: 20px;
-}
-
-.auth-steps li {
-    margin-bottom: 10px;
-}
-
-#authorizeButton {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-}
-
-/* 隐藏类 */
-.hidden {
-    display: none;
-}
-
-/* 响应式设计调整 */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        height: auto;
-        padding: 10px;
-    }
-
-    nav {
-        margin-left: 0;
-        margin-top: 10px;
-    }
-
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul li {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-}
-
-/* 编辑器容器的滑入滑出动画 */
-#editor-container {
-    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-}
-
-#editor-container.slide-in {
-    max-height: 1000px; /* 根据需要调整这个值 */
-    opacity: 1;
-}
-
-/* 在现有的 CSS 代码中修改或添加以下样式 */
-
-/* 响应式设计调整 */
-@media (max-width: 768px) {
-    .action-buttons {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .file-input-container {
-        max-width: none; /* 在小屏幕上取消最大宽度限制 */
-    }
-}
-
-#userInfo {
+/* 主要布局 */
+.main-wrapper {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    margin-top: var(--header-height);
+    position: relative;
+    min-height: calc(100vh - var(--header-height));
 }
 
-#userAvatar {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-}
-
-#logoutButton {
-    padding: 5px 10px;
-    font-size: 12px;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-#logoutButton:hover {
-    background-color: var(--button-hover);
-}
-
-/* 添加侧栏样式 */
-.sidebar {
+/* 左侧边栏 */
+#sidebar {
+    width: var(--sidebar-width);
+    height: calc(100vh - var(--header-height));
+    overflow-y: auto;
     position: fixed;
     left: 0;
     top: var(--header-height);
-    bottom: 0;
-    width: 250px;
-    background-color: var(--hint-bg);
+    background-color: #252525;
+    border-right: 1px solid var(--border-color);
+}
+
+.sidebar-content {
     padding: 20px;
-    overflow-y: auto;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease-in-out;
-    z-index: 1000;
 }
 
-.sidebar h3 {
-    color: var(--primary-color);
-    margin-bottom: 15px;
+/* 主内容区 */
+main {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    margin-right: var(--right-sidebar-width);
+    padding: var(--main-padding);
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - var(--header-height));
 }
 
-.sidebar ul {
-    list-style-type: none;
-    padding-left: 20px;
+article {
+    background-color: var(--editor-bg);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    
+    /* 调整横向距离 */
+    width: calc(100% - 40px); /* 减少 40px 的宽度，每边 20px */
+    margin-left: 20px;
+    margin-right: 20px;
+
+    /* 调整竖向长度 */
+    height: auto; /* 改为自动高度 */
+    max-height: calc(100vh - var(--header-height) - 40px); /* 设置最大高度 */
+    overflow-y: auto; /* 添加垂直滚动条 */
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.sidebar li {
-    margin-bottom: 5px;
+/* 按钮样式 */
+.action-buttons {
+    margin-bottom: 10px;
 }
 
-.sidebar .folder {
+.action-button,
+.icon-button {
+    background-color: var(--primary-color);
+    color: #000000;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
     cursor: pointer;
-    color: var(--primary-color);
+    font-size: 14px;
 }
 
-.sidebar .folder:before {
-    content: '▶ ';
-    font-size: 0.8em;
+.action-button:hover,
+.icon-button:hover {
+    background-color: var(--secondary-color);
 }
 
-.sidebar .folder.open:before {
-    content: '▼ ';
+/* 编辑器容器 */
+#editor-container {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 710px; /* 设置一个固定高度，或者使用百分比 */
+    min-height: auto; /* 移除最小高度限制 */
 }
 
-.sidebar a {
-    color: var(--text-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.sidebar a:hover {
-    color: var(--secondary-color);
-}
-
-/* 调整主内容区域，为侧边栏留出空间 */
-.main-content {
-    margin-left: 250px;
-}
-
-/* 响应式设计：在小屏幕上隐藏侧边栏 */
-@media (max-width: 768px) {
-    .sidebar {
-        transform: translateX(-100%);
-    }
-    
-    .sidebar.active {
-        transform: translateX(0);
-    }
-    
-    .main-content {
-        margin-left: 0;
-    }
-}
-
+/* 加载指示器 */
 .loading-indicator {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
-}
-
-.loading-indicator.hidden {
-    display: none;
+    z-index: 2000;
 }
 
 .spinner {
-    border: 4px solid #f3f3f3;
+    border: 4px solid var(--border-color);
     border-top: 4px solid var(--primary-color);
     border-radius: 50%;
     width: 40px;
@@ -504,13 +190,129 @@ nav ul li a:hover {
     100% { transform: rotate(360deg); }
 }
 
-.loading-indicator p {
-    margin-top: 10px;
-    color: white;
+.hidden {
+    display: none;
 }
 
+/* 文件列表样式 */
+#fileList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#fileList li {
+    margin-bottom: 5px;
+}
+
+#fileList a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+#fileList a:hover {
+    color: var(--primary-color);
+}
+
+.folder {
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.folder:before {
+    content: '▶ ';
+    font-size: 0.8em;
+}
+
+.folder.open:before {
+    content: '▼ ';
+}
+
+/* 输入框样式 */
+input[type="text"] {
+    background-color: #333;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+/* 文件名提示样式 */
 .file-name-hint {
-    font-size: 12px;
     color: #888;
+    font-size: 0.8em;
     margin-left: 10px;
+}
+
+/* 右侧边栏 */
+#right-sidebar {
+    width: var(--right-sidebar-width);
+    height: calc(100vh - var(--header-height));
+    overflow-y: auto;
+    position: fixed;
+    right: 0;
+    top: var(--header-height);
+    background-color: #252525;
+    border-left: 1px solid var(--border-color);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#tocList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#tocList li {
+    margin-bottom: 5px;
+}
+
+#tocList a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+#tocList a:hover {
+    color: var(--primary-color);
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    main {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #sidebar,
+    #right-sidebar {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    main {
+        padding: 5px;
+    }
+
+    article {
+        padding: 5px;
+    }
+
+    .action-buttons {
+        margin-bottom: 5px;
+    }
+}
+
+/* 编辑器样式 */
+.editormd {
+    height: 100% !important;
+    min-height: 400px !important; /* 设置一个合理的最小高度 */
 }
