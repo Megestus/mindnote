@@ -446,8 +446,7 @@ input[type="text"] {
     font-size: 0.8em;
     margin-left: 5px;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 
 /* 在文件末尾添加 */
 #themeToggle {
@@ -492,7 +491,4 @@ main {
 #sidebar, #right-sidebar {
     overflow-y: auto;
 }
-=======
->>>>>>> parent of 3302bae (更新主题列表和切换逻辑)
-=======
->>>>>>> parent of 3302bae (更新主题列表和切换逻辑)
+
