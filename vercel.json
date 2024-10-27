@@ -4,6 +4,7 @@
     { "src": "/api/auth/callback/github", "dest": "/api/auth.js" },
     { "src": "/api/github/save", "dest": "/api/github/save.js" },
     { "handle": "filesystem" },
+    { "src": "/lib/(.*)", "dest": "/lib/$1" },
     { "src": "/(.*)", "dest": "/index.html" }
     ]
 }

@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
     });
 
     // 重定向回主页面，并将用户信息和 accessToken 作为查询参数传递
-    const redirectUrl = new URL(process.env.FRONTEND_URL);
+    const redirectUrl = new URL(process.env.FRONTEND_URL || 'https://mindnote.vercel.app');
     redirectUrl.searchParams.append('login', userResponse.data.login);
     redirectUrl.searchParams.append('name', userResponse.data.name || '');
     redirectUrl.searchParams.append('avatar_url', userResponse.data.avatar_url);
