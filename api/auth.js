@@ -25,7 +25,16 @@ module.exports = async (req, res) => {
     });
 
     // 重定向回主页面，并将用户信息作为查询参数传递
-    res.redirect(`/?login=${userResponse.data.login}&name=${userResponse.data.name || ''}&avatar_url=${userResponse.data.avatar_url}`);
+    res.status(200).json({ 
+      success: true, 
+      message: "Authorization successful",
+      user: {
+        login: userResponse.data.login,
+        name: userResponse.data.name,
+        avatar_url: userResponse.data.avatar_url
+      },
+      accessToken: accessToken
+    });
   } catch (error) {
     console.error('Error in auth callback:', error);
     res.redirect('/?error=Authorization failed');
