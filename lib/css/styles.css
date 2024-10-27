@@ -251,16 +251,22 @@ article {
     padding: 0;
 }
 
+#fileList ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
 #fileList li {
     margin-bottom: 5px;
 }
 
-#fileList a {
+#fileList a, #fileList .folder {
     color: var(--text-color);
     text-decoration: none;
+    cursor: pointer;
 }
 
-#fileList a:hover {
+#fileList a:hover, #fileList .folder:hover {
     color: var(--primary-color);
 }
 
