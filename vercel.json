@@ -1,6 +1,9 @@
 {
     "version": 2,
     "routes": [
-    { "src": "/api/auth/callback/github", "dest": "/api/auth.js" }
+    { "src": "/api/auth/callback/github", "dest": "/api/auth.js" },
+    { "src": "/api/github/save", "dest": "/api/github/save.js" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
     ]
 }
