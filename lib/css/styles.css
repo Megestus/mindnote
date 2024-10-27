@@ -198,6 +198,7 @@ h1 {
 
 /* 编辑器容器 */
 #editor-container {
+    display: block !important;
     margin-top: 20px;
     border: 1px solid var(--border-color);
     border-radius: 4px;
@@ -206,6 +207,7 @@ h1 {
 
 /* 编辑器基础样式 */
 #editor {
+    display: block !important;
     min-height: 400px;
 }
 
@@ -512,4 +514,3 @@ nav ul li a:hover {
     color: #888;
     margin-left: 10px;
 }
-
