@@ -68,13 +68,14 @@
                         保存更改
                     </button>
                     <div class="file-input-container">
-                        <input type="text" id="fileNameInput" placeholder="输入文件名" title="输入文件名（默认为 mindnote.md）">
+                        <input type="text" id="fileNameInput" placeholder="输入文件名" title="请使用英文字母、数字和常见符号">
+                        <span class="file-name-hint">请勿使用中文文件名</span>
                         <button id="downloadButton" class="icon-button" title="下载文件">
                             <iconify-icon icon="mdi:download"></iconify-icon>
                         </button>
                     </div>
                 </div>
-                <div id="editor-container" class="hidden">
+                <div id="editor-container">
                     <div id="editor"></div>
                 </div>
             </div>
