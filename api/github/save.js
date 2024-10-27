@@ -10,30 +10,39 @@ module.exports = async (req, res) => {
     }
 
     try {
-        console.log('Checking repository...');
-        // 检查仓库是否存在
-        const repoResponse = await axios.get('https://api.github.com/repos/P5093/mindnote-blog', {
+        // 获取用户信息
+        const userResponse = await axios.get('https://api.github.com/user', {
             headers: { Authorization: `token ${accessToken}` }
         });
+        const username = userResponse.data.login;
 
-        console.log('Repository check response:', repoResponse.status);
-
-        if (repoResponse.status === 404) {
-            console.log('Repository not found, creating...');
-            // 创建仓库
-            await axios.post('https://api.github.com/user/repos', {
-                name: 'mindnote-blog',
-                description: 'Blog posts from MindNote',
-                private: false
-            }, {
+        console.log('Checking repository...');
+        // 检查仓库是否存在
+        try {
+            await axios.get(`https://api.github.com/repos/${username}/mindnote-blog`, {
                 headers: { Authorization: `token ${accessToken}` }
             });
-            console.log('Repository created');
+            console.log('Repository exists');
+        } catch (error) {
+            if (error.response && error.response.status === 404) {
+                console.log('Repository not found, creating...');
+                // 创建仓库
+                await axios.post('https://api.github.com/user/repos', {
+                    name: 'mindnote-blog',
+                    description: 'Blog posts from MindNote',
+                    private: false
+                }, {
+                    headers: { Authorization: `token ${accessToken}` }
+                });
+                console.log('Repository created');
+            } else {
+                throw error;
+            }
         }
 
         console.log('Saving file...');
         // 保存文件
-        const saveResponse = await axios.put(`https://api.github.com/repos/P5093/mindnote-blog/contents/${fileName}`, {
+        const saveResponse = await axios.put(`https://api.github.com/repos/${username}/mindnote-blog/contents/${fileName}`, {
             message: 'Update from MindNote',
             content: Buffer.from(content).toString('base64')
         }, {
