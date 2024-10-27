@@ -17,15 +17,15 @@ module.exports = async (req, res) => {
 
         console.log('Saving file...');
         const saveResponse = await axios.put(`https://api.github.com/repos/${username}/mindnote-blog/contents/${fileName}`, {
-            message: 'Update from MindNote',
+            message: sha ? 'Update from MindNote' : 'Create new file from MindNote',
             content: Buffer.from(content).toString('base64'),
-            sha: sha // 添加 sha 参数
+            sha: sha
         }, {
             headers: { Authorization: `token ${accessToken}` }
         });
 
         console.log('File saved successfully');
-        res.status(200).json({ success: true, message: 'File saved successfully' });
+        res.status(200).json({ success: true, message: 'File saved successfully', sha: saveResponse.data.content.sha });
     } catch (error) {
         console.error('Error saving to GitHub:', error.response ? error.response.data : error.message);
         res.status(500).json({ success: false, error: 'Failed to save file', details: error.response ? error.response.data : error.message });
