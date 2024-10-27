@@ -199,15 +199,34 @@ h1 {
 /* 编辑器容器 */
 #editor-container {
     margin-top: 20px;
-    background-color: var(--editor-bg);
-    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* 编辑器基础样式 */
+#editor {
+    min-height: 400px;
 }
 
 /* Editor.md 样式覆盖 */
 .editormd {
     border: none !important;
+}
+
+.editormd-fullscreen {
+    z-index: 9999;
+}
+
+/* 确保编辑器在小屏幕上也能正常显示 */
+@media (max-width: 768px) {
+    #editor-container {
+        margin-top: 10px;
+    }
+    
+    #editor {
+        min-height: 300px;
+    }
 }
 
 /* 响应式设计 */
