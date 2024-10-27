@@ -1,10 +1,37 @@
-@import 'theme.css';
-
 /* 全局变量 */
 :root {
+    --background-color: #282a36;
+    /* 深灰色背景 */
+    --current-line: #44475a;
+    /* 当前行 */
+    --foreground: #f8f8f2;
+    /* 前景色/文本颜色 */
+    --cyan: #8be9fd;
+    /* 青色 */
+    --green: #50fa7b;
+    /* 绿色 */
+    --orange: #ffb86c;
+    /* 橙色 */
+    --pink: #ff79c6;
+    /* 粉色 */
+    --purple: #bd93f9;
+    /* 紫色 */
+    --red: #ff5555;
+    /* 红色 */
+    --yellow: #f1fa8c;
+    /* 黄色 */
+
+    --primary-color: var(--purple);
+    --secondary-color: var(--cyan);
+    --text-color: var(--foreground);
+    --border-color: var(--current-line);  /* 使用 --current-line 替代 --comment */
+    --header-bg: #212231;  /* 更暗的头部背景 */
+    --sidebar-bg: #212335;  /* 更暗的侧边栏背景 */
+    --editor-bg: var(--background-color);
+
     --header-height: 60px;
-    --sidebar-width: 200px;
-    --right-sidebar-width: 200px;
+    --sidebar-width: 250px;
+    --right-sidebar-width: 250px;
     --main-padding: 10px;
 }
 
@@ -63,11 +90,7 @@ nav ul {
 }
 
 nav ul li {
-    margin-left: 15px;  /* 可能需要调整这个值 */
-}
-
-nav ul li:first-child {
-    margin-left: 0;  /* 确保第一个元素（调色盘）没有左边距 */
+    margin-left: 20px;
 }
 
 nav ul li a {
@@ -77,6 +100,13 @@ nav ul li a {
 
 nav ul li a:hover {
     color: var(--cyan);
+}
+
+nav ul li a iconify-icon,
+#logoutButton iconify-icon {
+    margin-right: 5px;
+    font-size: 1.2em;
+    vertical-align: middle;
 }
 
 #authSection {
@@ -148,6 +178,7 @@ main {
     display: flex;
     flex-direction: column;
     min-height: calc(100vh - var(--header-height));
+    overflow-y: auto;
 }
 
 article {
@@ -155,25 +186,10 @@ article {
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     padding: 10px;
-    flex: 1;
     display: flex;
     flex-direction: column;
-
-    /* 调整横向距离 */
-    width: calc(100% - 40px);
-    /* 减少 40px 的宽度，每边 20px */
-    margin-left: 20px;
-    margin-right: 20px;
-
-    /* 调整竖向长度 */
-    height: auto;
-    /* 改为自动高度 */
-    max-height: calc(100vh - var(--header-height) - 40px);
-    /* 设置最大高度 */
-    overflow-y: auto;
-    /* 添加垂直滚动条 */
-    margin-top: 20px;
-    margin-bottom: 20px;
+    height: 100%;
+    overflow: hidden;
 }
 
 /* 按钮样式 */
@@ -219,10 +235,9 @@ article {
     flex: 1;
     display: flex;
     flex-direction: column;
-    height: 710px;
-    /* 设置一个固定高度，或者使用百分比 */
-    min-height: auto;
-    /* 移除最小高度限制 */
+    height: calc(100vh - 150px); /* 调整高度 */
+    min-height: 400px;
+    overflow: hidden; /* 防止出现滚动条 */
 }
 
 /* 加载指示器 */
@@ -331,6 +346,7 @@ input[type="text"] {
     border-left: 1px solid var(--border-color);
     padding: 20px;
     box-sizing: border-box;
+    display: block; /* 确保这里不是 'none' */
 }
 
 #tocList {
@@ -354,6 +370,18 @@ input[type="text"] {
 
 #tocList a:hover {
     color: var(--cyan);
+}
+
+#tocList li::before {
+    content: '•';
+    color: var(--primary-color);
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+#tocList li {
+    padding-left: 1em;
 }
 
 /* 响应式设计 */
@@ -394,9 +422,7 @@ input[type="text"] {
 /* 编辑器样式 */
 .editormd {
     height: 100% !important;
-    min-height: 400px !important;
-    /* 设置一个合理的最小高度 */
-    border-color: var(--border-color);
+    min-height: 100% !important;
 }
 
 /* 文件输入框样式 */
@@ -420,6 +446,8 @@ input[type="text"] {
     font-size: 0.8em;
     margin-left: 5px;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
 
 /* 在文件末尾添加 */
 #themeToggle {
@@ -434,3 +462,37 @@ input[type="text"] {
 #themeToggle:hover {
     color: var(--primary-color);
 }
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.main-wrapper {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+main {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--main-padding);
+}
+
+#sidebar, #right-sidebar {
+    overflow-y: auto;
+}
+=======
+>>>>>>> parent of 3302bae (更新主题列表和切换逻辑)
+=======
+>>>>>>> parent of 3302bae (更新主题列表和切换逻辑)

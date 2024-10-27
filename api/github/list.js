@@ -1,5 +1,27 @@
 const axios = require('axios');
 
+async function getDirectoryContents(username, repo, path, accessToken) {
+    const response = await axios.get(`https://api.github.com/repos/${username}/${repo}/contents/${path}`, {
+        headers: { Authorization: `token ${accessToken}` }
+    });
+
+    let files = [];
+    for (const item of response.data) {
+        if (item.type === 'file') {
+            files.push({
+                name: item.name,
+                path: item.path,
+                type: item.type,
+                sha: item.sha
+            });
+        } else if (item.type === 'dir') {
+            const subFiles = await getDirectoryContents(username, repo, item.path, accessToken);
+            files = files.concat(subFiles);
+        }
+    }
+    return files;
+}
+
 module.exports = async (req, res) => {
     const accessToken = req.headers['authorization']?.split(' ')[1];
 
@@ -13,16 +35,7 @@ module.exports = async (req, res) => {
         });
         const username = userResponse.data.login;
 
-        const repoResponse = await axios.get(`https://api.github.com/repos/${username}/mindnote-blog/contents`, {
-            headers: { Authorization: `token ${accessToken}` }
-        });
-
-        const files = repoResponse.data.map(item => ({
-            name: item.name,
-            path: item.path,
-            type: item.type,
-            sha: item.sha
-        }));
+        const files = await getDirectoryContents(username, 'mindnote-blog', '', accessToken);
 
         res.status(200).json({ success: true, repoName: 'mindnote-blog', files });
     } catch (error) {

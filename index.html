@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindNote</title>
-    <link rel="stylesheet" href="/lib/css/theme.css">
     <link rel="stylesheet" href="/lib/css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/editor.md@1.5.0/css/editormd.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <scrip![list.js](https://megestus-1309556466.cos.ap-shanghai.myqcloud.com/img/list.js)t src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/editor.md@1.5.0/editormd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
+
 <body>
     <div id="app">
         <header>
@@ -18,20 +19,33 @@
                 <h1><a href="/">MindNote</a></h1>
                 <nav>
                     <ul>
+<<<<<<< HEAD
+<<<<<<< HEAD
                         <li>
-                            <button id="themeToggle" class="icon-button" title="切换主题">
-                                <iconify-icon icon="mdi:palette"></iconify-icon>
-                            </button>
+                            <a href="#home" id="homeLink">
+                                <iconify-icon icon="tabler:edit"></iconify-icon>
+                                编辑
+                            </a>
                         </li>
+=======
+=======
+>>>>>>> parent of 3302bae (更新主题列表和切换逻辑)
                         <li><a href="#home" id="homeLink">编辑</a></li>
+>>>>>>> parent of 3302bae (更新主题列表和切换逻辑)
                         <li id="authSection">
-                            <a href="#auth" id="authLink">登录</a>
+                            <a href="#" id="authLink">
+                                <iconify-icon icon="tabler:login"></iconify-icon>
+                                使用 GitHub 登录
+                            </a>
                             <div id="userInfo" style="display: none;">
                                 <a id="userAvatarLink" href="#" target="_blank">
                                     <img id="userAvatar" src="" alt="User Avatar">
                                 </a>
                                 <span id="userName"></span>
-                                <button id="logoutButton" class="action-button">登出</button>
+                                <button id="logoutButton" class="action-button">
+                                    <iconify-icon icon="tabler:logout"></iconify-icon>
+                                    登出
+                                </button>
                             </div>
                         </li>
                     </ul>
@@ -52,24 +66,26 @@
                             <div class="action-buttons">
                                 <div class="left-buttons">
                                     <button id="newNoteButton" class="action-button" title="新建文章">
-                                        <iconify-icon icon="mdi:plus"></iconify-icon>
+                                        <iconify-icon icon="tabler:file-plus"></iconify-icon>
                                         新建文章
                                     </button>
-                                    <button id="saveButton" class="action-button" title="保存到 GitHub" style="display: none;">
-                                        <iconify-icon icon="mdi:send"></iconify-icon>
+                                    <button id="saveButton" class="action-button" title="保存到 GitHub"
+                                        style="display: none;">
+                                        <iconify-icon icon="tabler:device-floppy"></iconify-icon>
                                         保存
                                     </button>
                                     <button id="updateButton" class="action-button" title="更新文件" style="display: none;">
-                                        <iconify-icon icon="mdi:update"></iconify-icon>
+                                        <iconify-icon icon="tabler:refresh"></iconify-icon>
                                         保存更改
                                     </button>
                                 </div>
                                 <div class="right-buttons">
                                     <div class="file-input-container">
-                                        <input type="text" id="fileNameInput" placeholder="输入文件名" title="请使用英文字母、数字和常见符号，请勿使用中文文件名">
+                                        <input type="text" id="fileNameInput" placeholder="输入文件名"
+                                            title="请使用英文字母、数字和常见符号，请勿使用中文文件名">
                                     </div>
                                     <button id="downloadButton" class="icon-button" title="下载文件">
-                                        <iconify-icon icon="mdi:download"></iconify-icon>
+                                        <iconify-icon icon="tabler:download"></iconify-icon>
                                     </button>
                                 </div>
                             </div>
@@ -88,7 +104,7 @@
                                 </ol>
                             </div>
                             <button id="authorizeButton" class="action-button">
-                                <iconify-icon icon="mdi:github"></iconify-icon>
+                                <iconify-icon icon="tabler:brand-github"></iconify-icon>
                                 使用 GitHub 登录
                             </button>
                         </div>
@@ -109,4 +125,5 @@
     </div>
     <script src="/lib/js/app.js"></script>
 </body>
+
 </html>

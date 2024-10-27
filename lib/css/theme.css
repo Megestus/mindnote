@@ -64,11 +64,53 @@
     --editor-bg: var(--background-color);
 }
 
-/* 你可以在这里添加其他主题，例如：
-.light-theme {
-    --background-color: #ffffff;
-    --current-line: #f1f1f1;
-    --foreground: #333333;
-    ...
+/* Editor.md 主题 */
+.editormd-theme-default {
+    --editor-theme: "default";
+    --preview-theme: "default";
+    --editor-area-theme: "default";
 }
-*/
+
+.editormd-theme-dark {
+    --editor-theme: "dark";
+    --preview-theme: "dark";
+    --editor-area-theme: "pastel-on-dark";
+}
+
+.editormd-theme-3024-day {
+    --editor-theme: "3024-day";
+    --preview-theme: "default";
+    --editor-area-theme: "3024-day";
+}
+
+.editormd-theme-3024-night {
+    --editor-theme: "3024-night";
+    --preview-theme: "dark";
+    --editor-area-theme: "3024-night";
+}
+
+.editormd-theme-ambiance {
+    --editor-theme: "ambiance";
+    --preview-theme: "dark";
+    --editor-area-theme: "ambiance";
+}
+
+.editormd-theme-base16-dark {
+    --editor-theme: "base16-dark";
+    --preview-theme: "dark";
+    --editor-area-theme: "base16-dark";
+}
+
+.editormd-theme-base16-light {
+    --editor-theme: "base16-light";
+    --preview-theme: "default";
+    --editor-area-theme: "base16-light";
+}
+
+.editormd-theme-blackboard {
+    --editor-theme: "blackboard";
+    --preview-theme: "dark";
+    --editor-area-theme: "blackboard";
+}
+
+/* 可以继续添加更多 Editor.md 主题 */
