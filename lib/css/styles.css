@@ -1,34 +1,7 @@
+@import 'theme.css';
+
 /* 全局变量 */
 :root {
-    --background-color: #282a36;
-    /* 深灰色背景 */
-    --current-line: #44475a;
-    /* 当前行 */
-    --foreground: #f8f8f2;
-    /* 前景色/文本颜色 */
-    --cyan: #8be9fd;
-    /* 青色 */
-    --green: #50fa7b;
-    /* 绿色 */
-    --orange: #ffb86c;
-    /* 橙色 */
-    --pink: #ff79c6;
-    /* 粉色 */
-    --purple: #bd93f9;
-    /* 紫色 */
-    --red: #ff5555;
-    /* 红色 */
-    --yellow: #f1fa8c;
-    /* 黄色 */
-
-    --primary-color: var(--purple);
-    --secondary-color: var(--cyan);
-    --text-color: var(--foreground);
-    --border-color: var(--current-line);  /* 使用 --current-line 替代 --comment */
-    --header-bg: #212231;  /* 更暗的头部背景 */
-    --sidebar-bg: #212335;  /* 更暗的侧边栏背景 */
-    --editor-bg: var(--background-color);
-
     --header-height: 60px;
     --sidebar-width: 200px;
     --right-sidebar-width: 200px;
@@ -90,7 +63,11 @@ nav ul {
 }
 
 nav ul li {
-    margin-left: 20px;
+    margin-left: 15px;  /* 可能需要调整这个值 */
+}
+
+nav ul li:first-child {
+    margin-left: 0;  /* 确保第一个元素（调色盘）没有左边距 */
 }
 
 nav ul li a {
@@ -442,4 +419,18 @@ input[type="text"] {
     color: #888;
     font-size: 0.8em;
     margin-left: 5px;
+}
+
+/* 在文件末尾添加 */
+#themeToggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#themeToggle:hover {
+    color: var(--primary-color);
 }

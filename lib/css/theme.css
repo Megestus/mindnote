@@ -1,0 +1,74 @@
+:root {
+    /* Dracula theme (default) */
+    --background-color: #282a36;
+    --current-line: #44475a;
+    --foreground: #f8f8f2;
+    --cyan: #8be9fd;
+    --green: #50fa7b;
+    --orange: #ffb86c;
+    --pink: #ff79c6;
+    --purple: #bd93f9;
+    --red: #ff5555;
+    --yellow: #f1fa8c;
+
+    --primary-color: var(--purple);
+    --secondary-color: var(--cyan);
+    --text-color: var(--foreground);
+    --border-color: var(--current-line);
+    --header-bg: #212231;
+    --sidebar-bg: #212335;
+    --editor-bg: var(--background-color);
+}
+
+
+
+.theme-nord {
+    --background-color: #2e3440;
+    --current-line: #3b4252;
+    --foreground: #d8dee9;
+    --cyan: #88c0d0;
+    --green: #a3be8c;
+    --orange: #d08770;
+    --pink: #b48ead;
+    --purple: #5e81ac;
+    --red: #bf616a;
+    --yellow: #ebcb8b;
+
+    --primary-color: var(--purple);
+    --secondary-color: var(--cyan);
+    --text-color: var(--foreground);
+    --border-color: var(--current-line);
+    --header-bg: #3b4252;
+    --sidebar-bg: #2e3440;
+    --editor-bg: var(--background-color);
+}
+
+.theme-github-dark {
+    --background-color: #0d1117;
+    --current-line: #21262d;
+    --foreground: #c9d1d9;
+    --cyan: #56d4dd;
+    --green: #3fb950;
+    --orange: #f0883e;
+    --pink: #db61a2;
+    --purple: #8957e5;
+    --red: #f85149;
+    --yellow: #d29922;
+
+    --primary-color: var(--purple);
+    --secondary-color: var(--cyan);
+    --text-color: var(--foreground);
+    --border-color: var(--current-line);
+    --header-bg: #161b22;
+    --sidebar-bg: #0d1117;
+    --editor-bg: var(--background-color);
+}
+
+/* 你可以在这里添加其他主题，例如：
+.light-theme {
+    --background-color: #ffffff;
+    --current-line: #f1f1f1;
+    --foreground: #333333;
+    ...
+}
+*/

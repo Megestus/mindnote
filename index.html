@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindNote</title>
+    <link rel="stylesheet" href="/lib/css/theme.css">
     <link rel="stylesheet" href="/lib/css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/editor.md@1.5.0/css/editormd.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
@@ -17,6 +18,11 @@
                 <h1><a href="/">MindNote</a></h1>
                 <nav>
                     <ul>
+                        <li>
+                            <button id="themeToggle" class="icon-button" title="切换主题">
+                                <iconify-icon icon="mdi:palette"></iconify-icon>
+                            </button>
+                        </li>
                         <li><a href="#home" id="homeLink">编辑</a></li>
                         <li id="authSection">
                             <a href="#auth" id="authLink">登录</a>
